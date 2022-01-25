@@ -138,16 +138,24 @@ namespace Factory06
         */
         public bool UpgradeAll()
         {
-            bool upgradeDone = true;
+            // bool upgradeDone = true;
+            // foreach (Machine machine in machines)
+            // {
+            //     if (!machine.Upgrade(ref money))
+            //     {
+            //         upgradeDone = false;
+            //     }
+            // }
+            // return upgradeDone;
+            // throw new NotImplementedException("Fix me!");
             foreach (Machine machine in machines)
             {
                 if (!machine.Upgrade(ref money))
                 {
-                    upgradeDone = false;
+                    return false;
                 }
             }
-            return upgradeDone;
-            // throw new NotImplementedException("Fix me!");
+            return true;
         }
 
         // TODO
@@ -192,7 +200,7 @@ namespace Factory06
                 moneyGained += machine.Destroy();
             }
             money += moneyGained;
-            machines.Clear();
+            // machines.Clear();
             return moneyGained;
             // throw new NotImplementedException("Fix me!");;
         }
@@ -213,10 +221,10 @@ namespace Factory06
             }
             money += moneyGained;
 
-            for (int i = 0; i < matchMachines.Count; i++)
-            {
-                machines.Remove(matchMachines[i]);
-            }
+            // for (int i = 0; i < matchMachines.Count; i++)
+            // {
+            //     machines.Remove(matchMachines[i]);
+            // }
             return moneyGained;
             // throw new NotImplementedException("Fix me!");
         }

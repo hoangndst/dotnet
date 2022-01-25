@@ -12,13 +12,36 @@ namespace Factory06
         // TODO
         // Getters
         // Add getter NbRound
+        public int NbRound
+        {
+            get
+            {
+                return nbRound;
+            }
+        }
         // Add getter Round
+        public int Round
+        {
+            get
+            {
+                return round;
+            }
+        }
         // Add getter Money
-
+        public long Money
+        {
+            get
+            {
+                return factory.Money;
+            }
+        }
         // TODO
         public Game(int nbRound, long initialMoney)
         {
-            throw new NotImplementedException("Fix me!");
+            this.nbRound = nbRound;
+            this.round = 1;
+            this.factory = new Factory(initialMoney);
+            // throw new NotImplementedException("Fix me!");
         }
         
         // TODO
@@ -30,7 +53,16 @@ namespace Factory06
          */
         public long Launch(Bot bot)
         {
-            throw new NotImplementedException("Fix me!");
+            bot.Start(this);
+            while (round <= nbRound)
+            {
+                bot.Update(this);
+                UpdateMoneyAll();
+                round++;
+            }
+            bot.End(this);
+            return Money;
+            // throw new NotImplementedException("Fix me!");
         }
 
         // TODO

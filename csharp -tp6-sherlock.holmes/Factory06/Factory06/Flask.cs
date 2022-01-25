@@ -44,19 +44,53 @@ namespace Factory06
         // TODO
         public override bool Produce(uint count, ref long money)
         {
-            throw new NotImplementedException("Fix me!");
+            if (count == 0)
+            {
+                return true;
+            } else if (count <= capacity)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    if (i < items.Count)
+                    {
+                        items[i] = new Item(ItemType.Flask);
+                    } else
+                    {
+                        items.Add(new Item(ItemType.Flask));
+                    }
+
+                    if (money - items[i].Price < 0)
+                    {
+                        items.RemoveAt(i);
+                        return false;
+                    } else
+                    {
+                        money -= items[i].Price;
+                    }
+                }
+            }
+            return false;
+            // throw new NotImplementedException("Fix me!");
         }
 
         // TODO
         public override void Clear()
         {
-            throw new NotImplementedException("Fix me!");
+            for (int i = 0; i < items.Count; i++)
+            {
+                items[i] = null;
+            }
+            // throw new NotImplementedException("Fix me!");
         }
 
         // TODO
         public override uint Destroy()
         {
-            throw new NotImplementedException("Fix me!");
+            level = 1;
+            capacity = 20;
+            Clear();
+            return (uint) MachinePrice.Flask / 3;
+            // throw new NotImplementedException("Fix me!");
         }
     }
 }

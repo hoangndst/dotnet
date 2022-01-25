@@ -4,12 +4,12 @@ namespace Factory06
 {
     public class Item
     {
-        private readonly uint price;
+        private readonly uint price; 
         private ItemType type;
         
         // TODO
         // Getters
-        // Add a getter Price
+        // Add a getter Price // getter and setter
         public uint Price
         {
             get

@@ -49,36 +49,26 @@ namespace Factory06
                 return true;
             } else if (count <= capacity)
             {
-                if (money >= count * (uint)type)
-                {   
-                    for (int i = 0; i < count; i++)
-                    {   
-                        if (i < items.Count)
-                        {
-                            items[i] = new Item(ItemType.Coat);
-                        } else
-                        {
-                            items.Add(new Item(ItemType.Coat));
-                        }
-                    }
-                    money -= count * (uint)type;
-                    return true;
-                } else
+                for (int i = 0; i < count; i++)
                 {
-                    uint maxItem = (uint)(money / (uint)type);
-                    for (int i = 0; i < maxItem; i++)
-                    {   
-                        if (i < items.Count)
-                        {
-                            items[i] = new Item(ItemType.Coat);
-                        } else
-                        {
-                            items.Add(new Item(ItemType.Coat));
-                        }
+                    if (i < items.Count)
+                    {
+                        items[i] = new Item(ItemType.Coat);
+                    } else
+                    {
+                        items.Add(new Item(ItemType.Coat));
                     }
-                    money -= maxItem * (uint)type;
-                    return false;
+
+                    if (money - items[i].Price < 0)
+                    {
+                        items.RemoveAt(i);
+                        return false; 
+                    } else
+                    {
+                        money -= items[i].Price;
+                    }
                 }
+                return true;
             }
             return false;
             // throw new NotImplementedException("Fix me!");

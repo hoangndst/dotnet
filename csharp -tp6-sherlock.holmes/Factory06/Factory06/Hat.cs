@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Factory06
 {
-    public class Hat : Machine
+    public class Hat : Machine // public protected private
     {
         private readonly uint [] upgrades = { 200, 300, 400 };
         private readonly int maxLevel = 4;
@@ -79,6 +79,7 @@ namespace Factory06
         // TODO
         public override void Clear()
         {
+        
             for (int i = 0; i < items.Count; i++)
             {
                 items[i] = null;
@@ -97,3 +98,5 @@ namespace Factory06
         }
     }
 }
+
+

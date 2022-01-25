@@ -14,7 +14,13 @@ namespace Factory06
             // Bot bot = new MyBot();
             
             // Console.WriteLine("Score: " + game.Launch(bot));
-        
+            
+            Item item1 = new Item(ItemType.Hat);
+            // price = 2, type = hat
+            
+            // type = coat
+            Console.WriteLine("Price: " + item1.Sell());
+
         }
     }
 }
